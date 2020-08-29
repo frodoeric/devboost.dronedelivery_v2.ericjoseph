@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using devboost.Domain.Commands.Request;
 using devboost.Domain.Handles.Queries.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -28,5 +29,22 @@ namespace devboost.dronedelivery.Controllers
             var result = await _clienteHandler.GetAll();
             return Ok(result);
         }
+
+        [HttpGet("TodoscomPedido")]
+        [Authorize(Roles = "admin")]
+        public async Task<ActionResult> GetAllPedidos()
+        {
+            var result = await _clienteHandler.GetAllPedido();
+            return Ok(result);
+        }
+
+        [HttpPost("criarCliente")]
+        [Authorize(Roles = "admin,usuario")]
+        public async Task<ActionResult> RealizarPedido([FromBody] CriarClienteRequest cliente)
+        {
+            var result = await _clienteHandler.CriarCliente(cliente);
+            return Ok(result);
+        }
+
     }
 }

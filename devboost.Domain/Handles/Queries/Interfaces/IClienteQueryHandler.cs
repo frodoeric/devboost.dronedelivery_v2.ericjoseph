@@ -1,4 +1,5 @@
-﻿using devboost.Domain.Model;
+﻿using devboost.Domain.Commands.Request;
+using devboost.Domain.Model;
 using devboost.Domain.Queries.Filters;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace devboost.Domain.Handles.Queries.Interfaces
     public interface IClienteQueryHandler
     {
         Task<List<Cliente>> GetAll();
-        
+        Task<Cliente> CriarCliente(CriarClienteRequest pedido);
+        Task<List<Cliente>> GetAllPedido();
     }
 }
