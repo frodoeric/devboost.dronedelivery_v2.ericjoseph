@@ -1,11 +1,15 @@
 ﻿using devboost.Domain.Model;
 using devboost.Domain.Queries.Filters;
+using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace devboost.Domain.Handles.Queries.Interfaces
 {
-    public interface IUserHandler
+    public interface IClienteQueryHandler
     {
-        Task<User> GetUser(QueryUserFilter ClienteDTO);
+        Task<List<Cliente>> GetAll();
+        
     }
 }
